@@ -1,0 +1,16 @@
+import React from "react";
+
+const Link = ({ className ,href ,children}) =>{
+    const onClick = (event) => {
+        event.preventDefaults();
+        window.history.pushState({}, '' , href);
+
+        const navEvent = new PopStateEvent('popstate');
+        window.dispatchEvent(navEvent);
+    };
+    return(
+        <a className={className} href={href}> {children}</a>
+    );
+};
+
+export default Link;
